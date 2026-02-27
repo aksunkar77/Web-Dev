@@ -1,0 +1,37 @@
+<div class="card" (click)="openLink()">
+
+  <div class="img-wrap">
+
+    @if (product.timerText) {
+      <div class="timer">{{ product.timerText }}</div>
+    }
+
+    @if (product.cashbackPercent) {
+      <div class="cashback">{{ product.cashbackPercent }}% CB</div>
+    }
+
+    <img [src]="product.imageUrl" />
+
+  </div>
+
+  <div class="title">{{ product.name }}</div>
+
+  <div class="rating">
+    ★ {{ product.rating }} ({{ product.reviews }})
+  </div>
+
+  <div class="price">
+    {{ formatMoney(product.price) }}
+  </div>
+
+  @if (product.monthlyPrice && product.months) {
+
+    <div class="installment">
+      Installment:
+      {{ formatMoney(product.monthlyPrice) }}
+      × {{ product.months }}
+    </div>
+
+  }
+
+</div>

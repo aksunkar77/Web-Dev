@@ -1,0 +1,11 @@
+<div class="grid">
+  @for (p of products; track p.id) {
+    <app-product-item [product]="p"></app-product-item>
+  }
+</div>
+
+@if (products.length === 0) {
+  <div class="empty">
+    No products found.
+  </div>
+}

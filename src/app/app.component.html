@@ -1,0 +1,120 @@
+<!-- Top Bar -->
+<div class="topbar">
+  <div class="brand">
+    <div class="logo">K</div>
+    <div class="brand-text">Kaspi.kz</div>
+  </div>
+
+  <div class="top-links">
+    <a href="#">For Customers</a>
+    <a href="#">For Business</a>
+    <a href="#">Kaspi Guide</a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+
+  <button class="tab"
+    [class.active]="activeTopTab==='shop'"
+    (click)="setTab('shop')">
+    Shop
+  </button>
+
+  <button class="tab"
+    [class.active]="activeTopTab==='scooter'"
+    (click)="setTab('scooter')">
+    Scooters
+  </button>
+
+  <div class="search">
+    <input [(ngModel)]="query" placeholder="Search..." />
+    <div class="search-icon">🔍</div>
+  </div>
+
+  <div class="city">
+    <div class="city-title">My city:</div>
+    <div class="city-name">Almaty</div>
+  </div>
+
+</div>
+
+<!-- Page -->
+<div class="page">
+
+  <!-- Sidebar -->
+  <aside class="left">
+
+    <div class="block">
+      <div class="block-title">All Categories</div>
+
+      <div class="cat-list">
+
+        @for (c of categories; track c.id) {
+
+          <button
+            class="cat-btn"
+            [class.active]="c.id===selectedCategoryId"
+            (click)="selectCategory(c.id)">
+
+            {{ c.name }}
+
+          </button>
+
+        }
+
+      </div>
+    </div>
+
+
+    <div class="block">
+
+      <div class="block-title">Price</div>
+
+      <div class="checks">
+
+        @for (r of priceRanges; track $index) {
+
+          <label class="check">
+
+            <input type="checkbox"
+              (change)="toggleRange($index)" />
+
+            <span>{{ r.label }}</span>
+
+          </label>
+
+        }
+
+      </div>
+    </div>
+
+  </aside>
+
+
+  <!-- Center -->
+  <main class="center">
+
+    <div class="head-row">
+
+      <div class="title">
+        "{{ currentCategoryName }}" — found:
+        <b>{{ filteredProducts.length }}</b>
+      </div>
+
+      <select class="sort" [(ngModel)]="sort">
+        <option value="popular">Popular</option>
+        <option value="price_asc">Price ↑</option>
+        <option value="price_desc">Price ↓</option>
+        <option value="rating">Rating</option>
+      </select>
+
+    </div>
+
+    <app-product-list
+      [products]="filteredProducts">
+    </app-product-list>
+
+  </main>
+
+</div>
