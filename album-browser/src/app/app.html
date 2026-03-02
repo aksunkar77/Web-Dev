@@ -1,0 +1,13 @@
+<nav class="nav">
+  <div class="nav__brand">AlbumBrowser</div>
+
+  <div class="nav__links">
+    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+    <a routerLink="/albums" routerLinkActive="active">Albums</a>
+  </div>
+</nav>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

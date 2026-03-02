@@ -1,0 +1,32 @@
+<h1>Album Detail</h1>
+
+<!-- Loading -->
+<div *ngIf="loading">Loading album...</div>
+
+<!-- Error -->
+<div *ngIf="!loading && errorMsg">{{ errorMsg }}</div>
+
+<!-- Content -->
+<div *ngIf="!loading && !errorMsg && album">
+  <p><b>ID:</b> {{ album.id }}</p>
+  <p><b>User ID:</b> {{ album.userId }}</p>
+
+  <label>
+    <b>Title:</b>
+    <input [(ngModel)]="title" />
+  </label>
+
+  <div class="actions">
+    <button (click)="save()" [disabled]="saving">
+      {{ saving ? 'Saving...' : 'Save' }}
+    </button>
+
+    <a class="btn" [routerLink]="['/albums', album.id, 'photos']">View Photos</a>
+    <a class="btn" routerLink="/albums">Back</a>
+  </div>
+</div>
+
+<!-- Empty state -->
+<div *ngIf="!loading && !errorMsg && !album">
+  Album not found.
+</div>

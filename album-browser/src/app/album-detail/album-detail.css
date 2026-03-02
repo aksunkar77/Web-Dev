@@ -1,0 +1,21 @@
+input {
+  display: block;
+  margin-top: 6px;
+  padding: 8px;
+  width: 100%;
+  max-width: 520px;
+}
+.actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn, button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
