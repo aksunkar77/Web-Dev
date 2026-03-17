@@ -1,21 +1,17 @@
-input {
-  display: block;
-  margin-top: 6px;
-  padding: 8px;
-  width: 100%;
-  max-width: 520px;
+.card {
+  background: #ffffffcc;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #ffd6e8;
+  box-shadow: 0 10px 25px rgba(255, 100, 150, 0.1);
 }
-.actions {
-  margin-top: 14px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.btn, button {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: transparent;
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #ff4d94, #ff85a2);
+  color: white;
   text-decoration: none;
-  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 600;
 }

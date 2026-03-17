@@ -1,32 +1,21 @@
-<h1>Album Detail</h1>
+<h2>Album Detail</h2>
 
-<!-- Loading -->
-<div *ngIf="loading">Loading album...</div>
+<ng-container *ngIf="album$ | async as album; else loading">
 
-<!-- Error -->
-<div *ngIf="!loading && errorMsg">{{ errorMsg }}</div>
+  <div class="card">
+    <p><b>ID:</b> {{ album.id }}</p>
+    <p><b>User:</b> {{ album.userId }}</p>
+    <p><b>Title:</b> {{ album.title }}</p>
 
-<!-- Content -->
-<div *ngIf="!loading && !errorMsg && album">
-  <p><b>ID:</b> {{ album.id }}</p>
-  <p><b>User ID:</b> {{ album.userId }}</p>
+    <br>
 
-  <label>
-    <b>Title:</b>
-    <input [(ngModel)]="title" />
-  </label>
-
-  <div class="actions">
-    <button (click)="save()" [disabled]="saving">
-      {{ saving ? 'Saving...' : 'Save' }}
-    </button>
-
-    <a class="btn" [routerLink]="['/albums', album.id, 'photos']">View Photos</a>
-    <a class="btn" routerLink="/albums">Back</a>
+    <a class="btn" [routerLink]="['/albums', album.id, 'photos']">
+      View Photos
+    </a>
   </div>
-</div>
 
-<!-- Empty state -->
-<div *ngIf="!loading && !errorMsg && !album">
-  Album not found.
-</div>
+</ng-container>
+
+<ng-template #loading>
+  <p>Loading album...</p>
+</ng-template>

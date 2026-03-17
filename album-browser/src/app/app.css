@@ -1,51 +1,52 @@
-
-:host {
-  display: block;
-  font-family: Arial, sans-serif;
-  background: #fafafa;
-  min-height: 100vh;
+html, body {
+  height: 100%;
 }
 
-
-.container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 20px;
+body {
+  margin: 0;
+  background: linear-gradient(
+    135deg,
+    #f6f7ff 0%,
+    #f7fbff 40%,
+    #fff7f2 100%
+  );
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #8498c3;
 }
 
-.nav {
+.topnav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
-  border-bottom: 1px solid #eee;
-  background: white;
+  gap: 14px;
+  padding: 12px 18px;
+  margin: 12px 16px;
+  border-radius: 14px;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  border: 1px solid #eee;
   position: sticky;
-  top: 0;
+  top: 10px;
+  z-index: 10;
 }
 
-.nav__brand {
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
-
-.nav__links {
-  display: flex;
-  gap: 12px; 
-}
-
-.nav__links a {
+.topnav a {
   text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 10px;
-  color: #222;
-}
-
-.nav__links a:hover {
-  background: #f2f2f2;
-}
-
-.nav__links a.active {
-  background: #e8f0ff;
+  padding: 10px 14px;
+  border-radius: 12px;
   font-weight: 700;
+  color: #222;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+}
+
+.topnav a:hover {
+  background: #f3f4f6;
+}
+
+.topnav a.active {
+  background: #eb0850;
+  color: #fff;
+}
+
+.page {
+  padding: 8px 16px 24px;
 }

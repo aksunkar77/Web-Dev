@@ -1,18 +1,26 @@
-<h1>Albums</h1>
+<div class="layout">
+  <div class="left">
+    <h2 class="title">Albums</h2>
 
-<div *ngIf="loading">Loading albums...</div>
-<div *ngIf="!loading && errorMsg">{{ errorMsg }}</div>
+    <ng-container *ngIf="albums$ | async as albums; else loading">
+      <button
+        class="item"
+        *ngFor="let album of albums"
+        [routerLink]="[album.id]"
+        routerLinkActive="active"
+      >
+        <div class="line1"><b>Album {{ album.id }}</b></div>
+        <div class="line2">User: {{ album.userId }}</div>
+      </button>
+    </ng-container>
 
-<ul *ngIf="!loading && !errorMsg && albums.length > 0" class="list">
-  <li *ngFor="let album of albums" class="item">
-    <a [routerLink]="['/albums', album.id]" class="link">
-      <b>{{ album.id }}</b> — {{ album.title }}
-    </a>
+    <ng-template #loading>
+      <p class="loading">Loading albums...</p>
+    </ng-template>
+  </div>
 
-    <button (click)="deleteAlbum(album.id)" class="danger">Delete</button>
-  </li>
-</ul>
-
-<div *ngIf="!loading && !errorMsg && albums.length === 0">
-  No albums found.
+  <div class="right">
+    <p class="hint">Select album to see details and photos →</p>
+    <router-outlet></router-outlet>
+  </div>
 </div>

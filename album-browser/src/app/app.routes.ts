@@ -8,9 +8,18 @@ import { AlbumPhotos } from './album-photos/album-photos';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+
   { path: 'home', component: Home },
   { path: 'about', component: About },
-  { path: 'albums', component: Albums },
-  { path: 'albums/:id', component: AlbumDetail },
-  { path: 'albums/:id/photos', component: AlbumPhotos },
+
+  {
+    path: 'albums',
+    component: Albums,
+    children: [
+      { path: ':id', component: AlbumDetail },
+      { path: ':id/photos', component: AlbumPhotos }
+    ]
+  },
+
+  { path: '**', redirectTo: 'home' }
 ];

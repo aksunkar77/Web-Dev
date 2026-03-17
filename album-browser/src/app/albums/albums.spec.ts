@@ -1,23 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Observable } from 'rxjs';
 
-import { Albums } from './albums';
+import { AlbumService } from '../services/album.service';
+import { Album } from '../models/album.model';
 
-describe('Albums', () => {
-  let component: Albums;
-  let fixture: ComponentFixture<Albums>;
+@Component({
+  selector: 'app-albums',
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
+  templateUrl: './albums.component.html',
+  styleUrls: ['./albums.component.css']
+})
+export class AlbumsComponent implements OnInit {
+  albums$!: Observable<Album[]>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Albums]
-    })
-    .compileComponents();
+  constructor(private albumService: AlbumService) {}
 
-    fixture = TestBed.createComponent(Albums);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit(): void {
+    this.albums$ = this.albumService.getAlbums();
+  }
+}
